@@ -1,11 +1,7 @@
-const keys = document.querySelectorAll('.key');
-
-keys.forEach((key) => {
-  key.addEventListener('transitionend', removeTransition);
-  key.addEventListener('mousedown', playSound);
-});
-
-document.addEventListener('keydown', playSound);
+function removeTransition(e) {
+  if (e.propertyName !== 'transform') return;
+  this.classList.remove('playing');
+}
 
 function playSound(e) {
   if (e.type === 'mousedown' && e.which !== 1) return;
@@ -24,23 +20,6 @@ function playSound(e) {
 
   key.classList.add('playing');
 }
-
-function removeTransition(e) {
-  if (e.propertyName !== 'transform') return;
-  this.classList.remove('playing');
-}
-
-const mode = document.querySelector('.mode');
-mode.addEventListener('click', changeMode);
-
-function changeMode(e) {
-  document.body.classList.toggle('light');
-}
-
-document.addEventListener("keypress", function(event) {
-  makeSound(event.key);
-  buttonAnimation(event.key);
-});
 
 function makeSound(key) {
 
@@ -103,12 +82,33 @@ function buttonAnimation(currentKey) {
   setTimeout(function() {activeButton.classList.remove("pressed");}, 100);
 }
 
+function changeMode(e) {
+  document.body.classList.toggle('light');
+}
+
+const keys = document.querySelectorAll('.key');
+const mode = document.querySelector('.mode');
+
+keys.forEach((key) => {
+  key.addEventListener('transitionend', removeTransition);
+  key.addEventListener('mousedown', playSound);
+});
+
+document.addEventListener('keydown', playSound);
+
+document.addEventListener("keypress", function(event) {
+  makeSound(event.key);
+  buttonAnimation(event.key);
+});
+
+mode.addEventListener('click', changeMode);
+
 console.log(`
-Первый этап (10/10)
- самостоятельно воспроизведен функционал с небольшими исправлениями
-Второй этап (10/10)
- реализован обязательный дополнительный фукционал (нажатие на кнопки при помощи мыши)
-Третий этап (10/10)
- реализован дополнительный фукционал на выбор (возможность переключать тему)
-Самооценка: общая оценка за задание 30 баллов.
-`);
+  Первый этап (10/10)
+  самостоятельно воспроизведен функционал с небольшими исправлениями
+  Второй этап (10/10)
+  реализован обязательный дополнительный фукционал (нажатие на кнопки при помощи мыши)
+  Третий этап (10/10)
+  реализован дополнительный фукционал на выбор (возможность переключать тему)
+  Самооценка: общая оценка за задание 30 баллов.
+  `);

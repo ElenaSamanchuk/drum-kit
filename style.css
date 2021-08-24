@@ -52,6 +52,13 @@ h1 {
   padding: 0
 }
 
+kbd {
+  display: block;
+  font-size: 4rem;
+  text-shadow: 0 0 0.5rem var(--main-element-color);
+  text-transform: uppercase;
+}
+
 .keys {
   display: flex;
   align-items: center;
@@ -85,7 +92,6 @@ h1 {
   box-shadow: 0 0 2rem var(--main-element-color);  
   text-shadow: 0 0 2rem var(--main-element-color);
 }
-
 
 .a {
   background-image: url("images/tom1.png");
@@ -121,13 +127,6 @@ h1 {
 
 .l {
   background-image: url("images/tom6.png");
-}
-
-kbd {
-  display: block;
-  font-size: 4rem;
-  text-shadow: 0 0 0.5rem var(--main-element-color);
-  text-transform: uppercase;
 }
 
 .sound {
